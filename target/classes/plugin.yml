@@ -1,0 +1,7 @@
+name: NSTitleSkills
+version: '1.0.0'
+main: org.nano.nstitleskills.NSTitleSkills
+api-version: '1.20'
+commands:
+  tts:
+    aliases: []
