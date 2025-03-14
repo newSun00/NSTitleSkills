@@ -61,6 +61,7 @@ public class DBFile {
                 String name = key.name();
                 configuration.set(finalPath1 + "." + name, value);
             });
+            configuration.set(path+"."+"XP",additional.getAdditionalXP());
 
             saveFile();
         });
@@ -99,9 +100,14 @@ public class DBFile {
             if (configuration.contains(path)) {
                 String finalPath = path;
                 Objects.requireNonNull(configuration.getConfigurationSection(path)).getKeys(false).forEach(key -> {
-                    Stats stat = Stats.valueOf(key);
-                    int value = configuration.getInt(finalPath + "." + key);
-                    additional.getAdditionalStats().put(stat, value);
+                    if ( key.equals("XP")){
+                        double value = configuration.getDouble(finalPath+"."+key);
+                        additional.setAdditionalXP(value);
+                    }else {
+                        Stats stat = Stats.valueOf(key);
+                        int value = configuration.getInt(finalPath + "." + key);
+                        additional.getAdditionalStats().put(stat, value);
+                    }
                 });
             }
 

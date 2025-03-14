@@ -109,7 +109,20 @@ public class StatsGui implements InventoryHolder {
                 i++;
             }
 
+            i = 40; // 칭호 추가 경험치 ++
+                double xp = sm.getAdditionalXP(title.getUnique());
 
+                ItemStack sk = BookBuilder.builder
+                        .create()
+                        .display("&a추가 경험치")
+                        .lore(List.of(
+                                "",
+                                "&a추가 &7(XP)&f: "+xp + "%"
+                        ))
+                        .addDataContainer("XP",""+xp)
+                        .model(1)
+                        .build(1);
+                inventory.setItem(i,sk);
         });
     }
     public void open(Player p){

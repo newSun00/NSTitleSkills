@@ -12,15 +12,25 @@ public class TitleStat {
      */
 
     private final Map<Stats, Integer> additionalStats;
+    private double additionalXP;
 
     public TitleStat() {
         additionalStats = new HashMap<>();
         for ( Stats stats : Stats.values()) {
             additionalStats.put(stats,0);
         }
+        additionalXP = 0;
     }
 
     public Map<Stats, Integer> getAdditionalStats() {
         return additionalStats;
+    }
+
+    public double getAdditionalXP() {
+        return additionalXP;
+    }
+
+    public void setAdditionalXP(double additionalXP) {
+        this.additionalXP = additionalXP;
     }
 }

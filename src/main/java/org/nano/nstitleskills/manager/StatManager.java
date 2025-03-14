@@ -11,4 +11,10 @@ public class StatManager {
                 .getAdditionalStats()
                 .getOrDefault(stats,0);
     }
+
+    public double getAdditionalXP(String unique) {
+        return registry.getStats(unique)
+                .getAdditionalXP();
+
+    }
 }

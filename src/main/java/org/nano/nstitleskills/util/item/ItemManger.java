@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import static org.nano.nstitleskills.util.number.Unit.unitDouble;
+
 public class ItemManger {
     private final StatRegistry registry = StatRegistry.getInstance();
 
@@ -69,6 +71,21 @@ public class ItemManger {
                 }
             }
         }
+
+        double additionalXP = registry.getStats(unique).getAdditionalXP();
+        boolean hasNonZeroValue4 = additionalXP != 0.0;
+        if (hasNonZeroValue4) {
+            if ( additionalXP > 0 ){
+                String name =  "&a추가 경험치 : &a+" +unitDouble(additionalXP);
+                lore.add(name);
+            }else if ( additionalXP < 0 ){
+                String name =  "&a추가 경험치 : &c" +unitDouble(additionalXP);
+                lore.add(name);
+            }
+        }
+
+
+
         if ( lore.size() == 1 ) return basicLore;
         newLore.addAll(lore);
         return newLore;

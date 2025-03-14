@@ -88,7 +88,24 @@ public class StatController {
         file.getDbFile().save(unique);
 
     }
+    /**
+     *
+     * @param unique < 칭호
+     * @param rate < 증감률
+     * @descripiton
+     * + 추가 경험치
+     * @warning
+     * - 설정하면 실시간으로 유저의 스텟 상태가 변해야 함.
+     * refresh 해줄 것
+     */
+    public void addXPPoint(String unique, double rate) {
+        StatManager manager = new StatManager();
+        double value = manager.getAdditionalXP(unique);
+        registry.getStats(unique)
+                        .setAdditionalXP(value+rate);
 
+        file.getDbFile().save(unique);
+    }
     /**
      * @param sender < 플레아어
      * @param unique < 칭호 고유 이름
@@ -203,5 +220,4 @@ public class StatController {
             }
         }
     }
-
 }

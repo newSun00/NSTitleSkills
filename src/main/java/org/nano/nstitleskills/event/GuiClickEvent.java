@@ -40,7 +40,19 @@ public class GuiClickEvent implements Listener {
                         }
                     }
                 }
-            }else if( slot >= 27 && slot <= 34 ){
+            }
+            else if ( slot == 40 ){
+                if (helper.hasKey(item, "XP")){
+                    switch (e.getClick()){
+                        case LEFT -> controller.addXPPoint(title.getUnique(), 0.1);
+                        case RIGHT -> controller.addXPPoint(title.getUnique(), -0.1);
+                        case SHIFT_LEFT -> controller.addXPPoint(title.getUnique(), 1.0);
+                        case SHIFT_RIGHT -> controller.addXPPoint(title.getUnique(), -1.0);
+                        case MIDDLE -> controller.addXPPoint(title.getUnique(),0);
+                    }
+                }
+            }
+            else if( slot >= 27 && slot <= 34 ){
                 for ( Stats stats : Stats.values()){
                     if (helper.hasKey(item, stats.name())){
                         switch (e.getClick()){
